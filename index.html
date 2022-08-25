@@ -59,7 +59,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
 	
 	<!-- <script src='style/prettify/prettify.js'></script>
 	<link href="style/prettify.css" rel="stylesheet" type="text/css" /> 
-
 	<script>Event.observe(window, 'load', function() {prettyPrint()});</script> -->
 
 	<script src='tetris.js' type="text/javascript"></script>
@@ -93,13 +92,19 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
 
 	<div id='controls' style="float: left" > 
 		<input type='button' onclick="if (TETRIS.isPaused()) { TETRIS.unPause(); } else { TETRIS.setPause(); }" value='Pause' style="font-size: 150%" /><br/>
+		
+		<p><input type='button' onclick="var i = document.getElementById(&quot;instr&quot;).style; i.display = (i.display==&quot;none&quot;?&quot;inline&quot;:&quot;none&quot;); TETRIS.setPause(); " value='Toggle Instructions' /></p>
+	</div>
+	<div id='instr' style="display: none;"> 
+
+		<input id = 'sens_range' type='range' min='0.2' max='5' step='0.05' value='1' onchange="TETRIS.setTouchSensitivity(this.value); document.getElementById(&quot;sensitivity&quot;).innerHTML = Math.round(this.value*1000)/1000;"/> 
+		<span id='sensitivity'>1</span>
+		</p>
+
+		<p><input type='button' onclick="var result = TETRIS.toggle_touch_draw(); if (result) {this.value = &quot;Turn Touch Debug Off&quot;; } else { this.value=&quot;Turn Touch Debug On&quot;;}" value='Toggle touch debug' /></p>
 
 	</div>
 </div>
 </body>
 </html>
-
-
-
-
 
